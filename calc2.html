@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc2</title>
+    <link rel="stylesheet" href="calc2.css">
+</head>
+<body>  
+    <h1>Che-Calculator</h1>  
+    <div class= "formstyle">  
+        <form name = "form1">  
+              
+            <!-- This input box shows the button pressed by the user in calculator. -->  
+            <input class="inputs" id = "calc" type ="text" name = "answer"> <br> <br>  
+            <!-- Display the calculator button on the screen. -->  
+            <!-- onclick() function displays the number pressed by the user. -->  
+            <input class="inputs b1" type = "button" value = "1" onclick = "form1.answer.value += '1' ">              
+            <input class="inputs b2" type = "button" value = "2" onclick = "form1.answer.value += '2' ">       
+            <input class="inputs b3" type = "button" value = "3" onclick = "form1.answer.value += '3' ">  
+            <input class="inputs" id="b+" type = "button" value = "+" onclick = "form1.answer.value += '+' ">  
+            <br> <br>  
+
+            <input class="inputs b4" type = "button" value = "4" onclick = "form1.answer.value += '4' ">  
+            <input class="inputs b5" type = "button" value = "5" onclick = "form1.answer.value += '5' ">  
+            <input class="inputs b6" type = "button" value = "6" onclick = "form1.answer.value += '6' ">  
+            <input class="inputs b-" type = "button" value = "-" onclick = "form1.answer.value += '-' ">  
+            <br> <br>  
+
+            <input class="inputs b7" type = "button" value = "7" onclick = "form1.answer.value += '7' ">  
+            <input class="inputs b8" type = "button" value = "8" onclick = "form1.answer.value += '8' ">  
+            <input class="inputs b9" type = "button" value = "9" onclick = "form1.answer.value += '9' ">  
+            <input class="inputs b*" type = "button" value = "*" onclick = "form1.answer.value += '*' ">  
+            <br> <br>  
+
+
+            <input class="inputs" id="b/" type = "button" value = "/" onclick = "form1.answer.value += '/' ">  
+            <input class="inputs b0" type = "button" value = "0" onclick = "form1.answer.value += '0' ">  
+            <input class="inputs" id="b." type = "button" value = "." onclick = "form1.answer.value += '.' "> 
+            <input class="inputs" id="b%" type = "button" value = "%" onclick = "form1.answer.value += '%' ">  
+            <!-- When we click on the '=' button, the onclick() shows the sum results on the calculator screen. -->  
+            <input class="inputs submit" type = "button" value = "=" onclick = "form1.answer.value = eval(form1.answer.value) ">           
+            <br>   
+            <!-- Display the Cancel button and erase all data entered by the user. -->  
+            <input class="inputs bClear" type = "button" value = "Clear All" onclick = "form1.answer.value = ' ' " id= "clear" >  
+            <br>   
+            
+        </form>  
+    </div>  
+  
+    <a href="calc1.html">Click here to see Calc1.html</a>
+    <a href="index.html">Click to see index.html</a>
+    <script src="calc2.js"></script>
+</body>
+</html>
