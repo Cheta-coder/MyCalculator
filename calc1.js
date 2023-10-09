@@ -73,17 +73,17 @@ opts.forEach((opt) => {
         if(stringNum + stringOpt) {     
             
             display.innerHTML = stringNum += stringOpt
-            answer.innerHTML = stringNum2
+            answer.innerHTML = stringNum2 += stringOpt
             console.log(answer.innerHTML)
 
             if(stringOpt === '+') {
-                stringNum = Number(stringNum)       
-                stringNum2 = Number(stringNum2)
-                answer.innerHTML =  stringNum + stringNum2
+                Num1 = Number(stringNum)       
+                Num2 = Number(stringNum2)
+                answer.innerHTML =  Num1 + Num2
                 console.log(answer.innerHTML)
             }
            
-        }
+        }console.log(stringNum)
 
         if (stringOpt === " ") {
             stringNum = ' '
@@ -109,9 +109,8 @@ opts.forEach((opt) => {
         //    //console.log(stringNum)
         // }
 
-        if(submit) {
-             
-        }
+
     })
 
 })
+submit
