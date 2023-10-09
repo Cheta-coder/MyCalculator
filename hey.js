@@ -47,18 +47,23 @@ opts.forEach((opt) =>{
 
 equalTo.addEventListener('click', (e)=>{    
     if(opts.value = '+'){
+        calcAnswered = ''
+        calcType = ''
         stringNum = ''
         stringAns = ''
+        
                 
-        stringAns = (calcAnswered + calcTyped)
+        stringAns += (calcAnswered + calcType)
         calcAnswered = Number(calcAnswer.innerHTML)
         calcType = Number(calcTyped.innerHTML)
         stringAns = Number(stringAns)
         
-        calcAnswer.innerHTML = stringAns
+        calcAnswer.innerHTML = calcType + calcAnswered
         calcTyped.innerHTML = stringNum
     }
     console.log(typeof(stringAns))
     console.log(stringAns)
+    console.log(calcAnswered)
+    console.log(calcType + calcAnswered)
     e.preventDefault()
 })
