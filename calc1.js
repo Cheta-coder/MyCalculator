@@ -61,12 +61,13 @@ numbers.forEach((number) => {
 opts.forEach((opt) => {
 
 
-    opt.addEventListener('click', (e)=>{
+opt.addEventListener('click', (e)=>{
         
         stringOpt = opt.value;
         //stringNum += stringOpt;
         
         // console.log(stringNum)
+        console.log(stringOpt)
         submit = opt.value === '='
         console.log(submit)
 
