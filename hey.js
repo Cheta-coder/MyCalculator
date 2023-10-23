@@ -18,7 +18,12 @@ let calcTyped = document.querySelector('#calcTyped')
 let numbers = document.querySelectorAll('.number')
 let opts = document.querySelectorAll('.opt')
 let cntrls = document.querySelectorAll('.cntrl')
-let equalTo = document.querySelector('.equalTo')
+let equalTo = document.querySelector('.equalTo');
+let calcType = 0;
+let calcAnswered = 0;
+let operatorClicked= '';
+let stringNum = ''
+let stringAns = '' 
 
 numbers.forEach((number) =>{
     stringNum = ''
@@ -39,31 +44,87 @@ numbers.forEach((number) =>{
 opts.forEach((opt) =>{
     opt.addEventListener('click', (e)=>{
         stringNum = ''
-        calcAnswer.innerHTML = calcTyped.innerHTML
+        operatorClicked = opt.value
+        calcAnswer.innerHTML = calcTyped.innerHTML + operatorClicked
         calcTyped.innerHTML = stringNum;
+
     })
 
 })
 
-equalTo.addEventListener('click', (e)=>{    
-    if(opts.value = '+'){
-        calcAnswered = ''
-        calcType = ''
-        stringNum = ''
-        stringAns = ''
-        
-                
-        stringAns += (calcAnswered + calcType)
+equalTo.addEventListener('click', (e)=>{ 
+    
+   
+
+    if(operatorClicked === "+"){ 
+                  
+        console.log('im in +')
         calcAnswered = Number(calcAnswer.innerHTML)
         calcType = Number(calcTyped.innerHTML)
-        stringAns = Number(stringAns)
-        
+        stringAns = Number(stringAns)  
+
         calcAnswer.innerHTML = calcType + calcAnswered
+        calcTyped.innerHTML = stringAns
+        return
+    } else if(operatorClicked === "-") {
+        stringNum = ' '
+        
+        calcAnswered = Number(calcAnswer.innerHTML)
+        calcType = Number(calcTyped.innerHTML)   
+
+        calcAnswer.innerHTML = calcAnswered - calcType
         calcTyped.innerHTML = stringNum
+        console.log('I ran ooo')
+        return
+    } else if(operatorClicked === "*"){
+        stringNum = ' '
+
+        calcAnswered = Number(calcAnswer.innerHTML)
+        calcType = Number(calcTyped.innerHTML)   
+
+        calcAnswer.innerHTML = calcAnswered * calcType
+        calcTyped.innerHTML = stringNum
+        return
+    }else if(operatorClicked === "/"){
+        stringNum = ' '
+
+        calcAnswered = Number(calcAnswer.innerHTML)
+        calcType = Number(calcTyped.innerHTML)   
+
+        calcAnswer.innerHTML = calcAnswered / calcType
+        calcTyped.innerHTML = stringNum
+        return
+    }else if(operatorClicked === "%"){
+        stringNum = ' '
+
+        calcAnswered = Number(calcAnswer.innerHTML)
+        calcType = Number(calcTyped.innerHTML)   
+
+        calcAnswer.innerHTML = calcAnswered % calcType
+        calcTyped.innerHTML = stringNum
+    
     }
+               
     console.log(typeof(stringAns))
     console.log(stringAns)
     console.log(calcAnswered)
-    console.log(calcType + calcAnswered)
-    e.preventDefault()
+    console.log(calcAnswered)
+    console.log(calcType - calcAnswered)
+})
+
+cntrls.forEach((cntrl) =>{
+    cntrl.addEventListener('click', (e)=>{
+        cntrlClicked = cntrl.value
+        if(cntrlClicked === "AC"){
+            stringNum = ' '
+            calcAnswer.innerHTML = stringNum
+            calcTyped.innerHTML = stringNum
+        }    
+
+        if(cntrlClicked === "Del"){
+            stringNum.slice(-1)
+        }
+        
+        console.log('clear') 
+    })
 })
