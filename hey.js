@@ -13,28 +13,37 @@
 // Create a second variable to hold the 2nd part of the value
 // When = is clicked, bring the first values and second values, use a number constructor change its data type to number and using if statement get the operator clicked(pressed) and use it or calculation.
 
-let calcAnswer = document.querySelector('#calcAnswer')
-let calcTyped = document.querySelector('#calcTyped')
-let numbers = document.querySelectorAll('.number')
-let opts = document.querySelectorAll('.opt')
-let cntrls = document.querySelectorAll('.cntrl')
+let calcAnswer = document.querySelector('#calcAnswer');
+let calcTyped = document.querySelector('#calcTyped');
+let numbers = document.querySelectorAll('.number');
+let opts = document.querySelectorAll('.opt');
+let cntrls = document.querySelectorAll('.cntrl');
 let equalTo = document.querySelector('.equalTo');
 let calcType = 0;
 let calcAnswered = 0;
 let operatorClicked= '';
-let stringNum = ''
-let stringAns = '' 
+let check = false;
+let stringNum = '';
+let stringNum2 = '';
+let stringAns = '';
 
 numbers.forEach((number) =>{
-    stringNum = ''
     number.addEventListener('click', (e)=>{
-        stringNum += number.value;
-
-        if(stringNum.length<10) {
-            calcTyped.innerHTML = stringNum
-        }else if(stringNum.length>8) {
-            calcTyped.innerHTML = 'Che-culator user, you are given a maximum of 9 values'
+        if(!check){
+            stringNum += number.value;
+            calcTyped.innerHTML = stringNum;
+        } else{
+            stringNum2 += number.value;
+            calcTyped.innerHTML = `${stringNum} ${operatorClicked} ${stringNum2}`;
         }
+        
+        if(stringNum.length<10) {
+            calcTyped.innerHTML = stringNum;
+        }else{
+            calcTyped.innerHTML = 'Che-culator user, you are given a maximum of 9 values'
+            stringNum != number.value;
+        }
+        return
         console.log(stringNum)
 
         e.preventDefault()
@@ -43,10 +52,11 @@ numbers.forEach((number) =>{
 
 opts.forEach((opt) =>{
     opt.addEventListener('click', (e)=>{
-        stringNum = ''
+        check = true
         operatorClicked = opt.value
-        calcAnswer.innerHTML = calcTyped.innerHTML + operatorClicked
-        calcTyped.innerHTML = stringNum;
+        calcTyped.innerHTML = `${stringNum} ${operatorClicked} ${stringNum2}`;
+        console.log(calcTyped.innerHTML)
+        calcAnswer.innerHTML = '';
 
     })
 
@@ -59,49 +69,34 @@ equalTo.addEventListener('click', (e)=>{
     if(operatorClicked === "+"){ 
                   
         console.log('im in +')
-        calcAnswered = Number(calcAnswer.innerHTML)
-        calcType = Number(calcTyped.innerHTML)
-        stringAns = Number(stringAns)  
 
-        calcAnswer.innerHTML = calcType + calcAnswered
-        calcTyped.innerHTML = stringAns
+        stringAns = Number(stringNum) + Number(stringNum2)
+        calcAnswer.innerHTML = stringAns
         return
     } else if(operatorClicked === "-") {
         stringNum = ' '
         
-        calcAnswered = Number(calcAnswer.innerHTML)
-        calcType = Number(calcTyped.innerHTML)   
-
-        calcAnswer.innerHTML = calcAnswered - calcType
-        calcTyped.innerHTML = stringNum
+        calcTyped.innerHTML = calcAnswered - calcType
+        calcAnswer.innerHTML = stringNum
         console.log('I ran ooo')
         return
     } else if(operatorClicked === "*"){
         stringNum = ' '
 
-        calcAnswered = Number(calcAnswer.innerHTML)
-        calcType = Number(calcTyped.innerHTML)   
-
-        calcAnswer.innerHTML = calcAnswered * calcType
-        calcTyped.innerHTML = stringNum
+        calcTyped.innerHTML = calcAnswered * calcType
+        calcAnswer.innerHTML = stringNum
         return
     }else if(operatorClicked === "/"){
         stringNum = ' '
 
-        calcAnswered = Number(calcAnswer.innerHTML)
-        calcType = Number(calcTyped.innerHTML)   
-
-        calcAnswer.innerHTML = calcAnswered / calcType
-        calcTyped.innerHTML = stringNum
+        calcTyped.innerHTML = calcAnswered / calcType
+        calcAnswer.innerHTML = stringNum
         return
     }else if(operatorClicked === "%"){
         stringNum = ' '
 
-        calcAnswered = Number(calcAnswer.innerHTML)
-        calcType = Number(calcTyped.innerHTML)   
-
-        calcAnswer.innerHTML = calcAnswered % calcType
-        calcTyped.innerHTML = stringNum
+        calcTyped.innerHTML = calcAnswered % calcType
+        calcAnswer.innerHTML = stringNum
     
     }
                
