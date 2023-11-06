@@ -64,7 +64,7 @@ opts.forEach((opt) =>{
 
 equalTo.addEventListener('click', (e)=>{ 
     
-   
+
 
     if(operatorClicked === "+"){ 
         console.log('im in +')
@@ -101,13 +101,14 @@ cntrls.forEach((cntrl) =>{
     cntrl.addEventListener('click', (e)=>{
         cntrlClicked = cntrl.value
         if(cntrlClicked === "AC"){
+            check = false
             stringAns = ''
             stringNum = ''
             stringNum2 = ''
             let clear = ''
             calcAnswer.innerHTML = clear
             calcTyped.innerHTML = clear
-        }   
+        }    
 
         if(cntrlClicked === "Del"){
             calcTyped.innerHTML.slice(-1)
