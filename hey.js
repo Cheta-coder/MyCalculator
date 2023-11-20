@@ -1,4 +1,4 @@
-// The New Thought Process
+                                // The New Thought Process
 // Mock up the buttons and paragraph(div) for display
 // Give the buttons value-property equal to the display value
 // Give the paragraphs an Id or class
@@ -23,25 +23,32 @@ let calcType = 0;
 let calcAnswered = 0;
 let operatorClicked= '';
 let check = false;
+let start = false;
 let stringNum = '';
 let stringNum2 = '';
 let stringAns = '';
 
 numbers.forEach((number) =>{
     number.addEventListener('click', (e)=>{
-        if(!check){
-            stringNum += number.value;
-            calcTyped.innerHTML = stringNum;
-            if(stringNum.length<10) {
+        start = true
+        if(start = true){
+            if(!check){
+                stringNum += number.value;
                 calcTyped.innerHTML = stringNum;
-            }else{
-                calcTyped.innerHTML = 'Che-culator user, you are given a maximum of 9 values'
-                stringNum != number.value;
+                if(stringNum.length<10) {
+                    calcTyped.innerHTML = stringNum;
+                }else{
+                    calcTyped.innerHTML = 'Che-culator user, you are given a maximum of 9 values'
+                    stringNum != number.value;
+                }
+                return
+            } else{
+                stringNum2 += number.value;
+                calcTyped.innerHTML = `${stringNum} ${operatorClicked} ${stringNum2}`;
             }
-            return
-        } else{
-            stringNum2 += number.value;
-            calcTyped.innerHTML = `${stringNum} ${operatorClicked} ${stringNum2}`;
+        }else{
+            stringNum != number.value;
+            stringNum2 != number.value
         }
         
         console.log(stringNum)
@@ -59,16 +66,15 @@ opts.forEach((opt) =>{
         calcAnswer.innerHTML = '';
 
     })
-
+    
 })
 
 equalTo.addEventListener('click', (e)=>{ 
     
-
-
+    
     if(operatorClicked === "+"){ 
         console.log('im in +')
-
+        
         stringAns = Number(stringNum) + Number(stringNum2)
         calcAnswer.innerHTML = stringAns
         return
@@ -93,8 +99,16 @@ equalTo.addEventListener('click', (e)=>{
         calcAnswer.innerHTML = stringAns
         return
     }
-               
-
+    if(numbers.clicked){
+        console.log(stringNum)
+        
+        start = true;
+        check = false;
+        stringNum = "";
+        stringNum2 = "";
+        stringAns = "";
+    }
+    
 })
 
 cntrls.forEach((cntrl) =>{
@@ -111,9 +125,29 @@ cntrls.forEach((cntrl) =>{
         }    
 
         if(cntrlClicked === "Del"){
-            calcTyped.innerHTML.slice(-1)
-        }
+
+
+            if(check){
+                console.log(stringNum2)
+               stringNum2 =  stringNum2.slice(0,-1)
+               console.log(stringNum2)
+            }
+            else{
+                console.log(stringNum)
+                stringNum = stringNum.slice(0,-1)
+                console.log(stringNum)
+            }
+            // check = false
+
+            // calcTyped.innerHTML.splice(-1, 1)
+            // calcTyped.innerHTML = calcTyped.innerHTML
+
+            // calcTyped.innerHTML.pop()
+            // calcTyped.innerHTML = calcTyped.innerHTML.pop()
+            // calcTyped.innerHTML = calcTyped.innerHTML.substring(0, calcTyped.innerHTML.length-1)
+            calcTyped.innerHTML = calcTyped.innerHTML.slice(0, -1)  
+        } return
         
         console.log('clear') 
     })
-})
+}) 
