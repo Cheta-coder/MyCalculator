@@ -1,4 +1,4 @@
-                                // The New Thought Process
+// The New Thought Process
 // Mock up the buttons and paragraph(div) for display
 // Give the buttons value-property equal to the display value
 // Give the paragraphs an Id or class
@@ -19,8 +19,6 @@ let numbers = document.querySelectorAll('.number');
 let opts = document.querySelectorAll('.opt');
 let cntrls = document.querySelectorAll('.cntrl');
 let equalTo = document.querySelector('.equalTo');
-let calcType = 0;
-let calcAnswered = 0;
 let operatorClicked= '';
 let check = false;
 let start = false;
@@ -30,25 +28,25 @@ let stringAns = '';
 
 numbers.forEach((number) =>{
     number.addEventListener('click', (e)=>{
-        start = true
-        if(start = true){
-            if(!check){
-                stringNum += number.value;
+        if(start){
+            stringNum = "";
+            stringNum2 = "";
+            calcAnswer.innerHTML = "";
+            calcTyped.innerHTML = "";
+        }
+        if(!check){
+            stringNum += number.value;
+            calcTyped.innerHTML = stringNum;
+            if(stringNum.length<10) {
                 calcTyped.innerHTML = stringNum;
-                if(stringNum.length<10) {
-                    calcTyped.innerHTML = stringNum;
-                }else{
-                    calcTyped.innerHTML = 'Che-culator user, you are given a maximum of 9 values'
-                    stringNum != number.value;
-                }
-                return
-            } else{
-                stringNum2 += number.value;
-                calcTyped.innerHTML = `${stringNum} ${operatorClicked} ${stringNum2}`;
+            }else{
+                calcTyped.innerHTML = 'Che-culator user, you are given a maximum of 9 values'
+                stringNum != number.value;
             }
-        }else{
-            stringNum != number.value;
-            stringNum2 != number.value
+            return
+        } else{
+            stringNum2 += number.value;
+            calcTyped.innerHTML = `${stringNum} ${operatorClicked} ${stringNum2}`;
         }
         
         console.log(stringNum)
@@ -60,6 +58,7 @@ numbers.forEach((number) =>{
 opts.forEach((opt) =>{
     opt.addEventListener('click', (e)=>{
         check = true
+        start = false
         operatorClicked = opt.value
         calcTyped.innerHTML = `${stringNum} ${operatorClicked} ${stringNum2}`;
         console.log(calcTyped.innerHTML)
@@ -70,10 +69,10 @@ opts.forEach((opt) =>{
 })
 
 equalTo.addEventListener('click', (e)=>{ 
-    
+    check = false
+    start = true
     
     if(operatorClicked === "+"){ 
-        console.log('im in +')
         
         stringAns = Number(stringNum) + Number(stringNum2)
         calcAnswer.innerHTML = stringAns
@@ -99,16 +98,7 @@ equalTo.addEventListener('click', (e)=>{
         calcAnswer.innerHTML = stringAns
         return
     }
-    if(numbers.clicked){
-        console.log(stringNum)
-        
-        start = true;
-        check = false;
-        stringNum = "";
-        stringNum2 = "";
-        stringAns = "";
-    }
-    
+  
 })
 
 cntrls.forEach((cntrl) =>{
