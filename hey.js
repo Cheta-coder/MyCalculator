@@ -32,7 +32,10 @@ numbers.forEach((number) =>{
             stringNum = "";
             stringNum2 = "";
             calcAnswer.innerHTML = "";
-            calcTyped.innerHTML = "";
+            calcTyped.innerHTML = stringNum;
+            check = false;
+            console.log(stringNum);
+            return
         }
         if(!check){
             stringNum += number.value;
@@ -98,6 +101,7 @@ equalTo.addEventListener('click', (e)=>{
         calcAnswer.innerHTML = stringAns
         return
     }
+
   
 })
 
@@ -105,13 +109,13 @@ cntrls.forEach((cntrl) =>{
     cntrl.addEventListener('click', (e)=>{
         cntrlClicked = cntrl.value
         if(cntrlClicked === "AC"){
-            check = false
             stringAns = ''
             stringNum = ''
             stringNum2 = ''
             let clear = ''
-            calcAnswer.innerHTML = clear
-            calcTyped.innerHTML = clear
+            calcAnswer.innerHTML = clear;
+            calcTyped.innerHTML = 0;
+            return
         }    
 
         if(cntrlClicked === "Del"){
